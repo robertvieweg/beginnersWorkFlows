@@ -18,6 +18,9 @@ jobs:
       - run: echo Flash, Green Lantern, Superman and Wonderwoman
       
   joker:
+    strategy:
+      matrix: 
+        os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: windows-latest
     needs: [bestHero, justiceLeague]
     steps:
