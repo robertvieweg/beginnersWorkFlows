@@ -49,7 +49,7 @@ jobs:
       - name: Mám rád banány
         uses: actions/checkout@v2
       - name: Robot Gui test run
-        uses: |
+        run: |
           docker run --shm-size=1g \
             -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/reports:Z \
             -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/tests:Z \
