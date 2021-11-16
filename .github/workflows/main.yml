@@ -50,7 +50,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Robot Gui test run
         uses: |
-          docker run \
+          docker run --shm-size=1g \
             -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/reports:Z \
             -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/tests:Z \
             -e BROWSER=chrome \
