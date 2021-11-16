@@ -17,6 +17,18 @@ jobs:
       - name: Start test
         run: |
           python -m robot -i api test/RobotFrameWork/tc.robot
+          
+  postmanTest:
+      name: Postman Test
+      runs-on: ubuntu-latest
+      steps:
+        - name: Code checkout
+          uses: actions/checkout@v2
+        - name: Run Newman #NewMan je konzole pro Postmana, radši zadávat takhle
+          uses: matt-ball/newman-action@v1.0.2
+          with:
+            collection: ${{ github.workspace }}/test/Postman/TestApi.json
+            reporter: cli
 
 
 #name: DC
