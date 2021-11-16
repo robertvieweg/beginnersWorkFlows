@@ -16,3 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: echo Flash, Green Lantern, Superman and Wonderwoman
+      
+  joker:
+    runs-on: windows-latest
+    needs: [bestHero, justiceLeague]
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+            echo Ahoj Batmane
+            echo Jsem vtipnej
