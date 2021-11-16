@@ -4,9 +4,9 @@ on:
   push:
     branches: [ main ]
 
-jobs:
-  bestHero:
+jobs: 
+  bestHero: 
     runs on: ubuntu-latest
-    steps:
-      - users: actions/checkout@v2
+    steps: 
+      - uses: actions/checkout@v2
       - run: echo Batman Hello world
