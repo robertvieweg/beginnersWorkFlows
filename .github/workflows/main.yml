@@ -10,3 +10,9 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
       - run: echo Batman Hello world
+
+  justiceLeague:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo Flash, Green Lantern, Superman and Wonderwoman
