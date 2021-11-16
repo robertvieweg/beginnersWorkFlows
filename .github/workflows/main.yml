@@ -30,7 +30,18 @@ jobs:
             collection: ${{ github.workspace }}/test/Postman/TestApi.json
             reporter: cli
 
-
+  loadTest:
+    name: K6
+    runs-on: ubuntu-latest
+    steps:
+        - name: Code checkout
+          uses: actions/checkout@v2
+        - name: K6 Run
+          uses: grafana/k6-action@v0.2.0
+          with:
+            filename: ${{ github.workspace }}/test/k6/loadtest.js
+          
+          
 #name: DC
 
 # on:
