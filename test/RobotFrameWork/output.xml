@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.1 (Python 3.9.7 on win32)" generated="20211116 07:31:55.462" rpa="false" schemaversion="2">
+<suite id="s1" name="Tc" source="C:\Users\JanEgermaierTesena\Downloads\gitHubWorkShop-master (2)\gitHubWorkShop-master\test\RobotFrameWork\tc.robot">
+<test id="s1-t1" name="Find Api">
+<kw name="API Connect" library="keywords">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>api</arg>
+<arg>${URL_API}</arg>
+<arg>verify=True</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20211116 07:31:55.801" level="INFO">Creating Session using : alias=api, url=https://procesor2017.github.io/gitHubWorkShop/under, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20211116 07:31:55.801" endtime="20211116 07:31:55.801"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>api</arg>
+<arg>/api.json</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20211116 07:31:55.917" level="INFO">GET Request : url=https://procesor2017.github.io/gitHubWorkShop/under/api.json 
+ path_url=/gitHubWorkShop/under/api.json 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20211116 07:31:55.917" level="INFO">GET Response : url=https://procesor2017.github.io/gitHubWorkShop/under/api.json 
+ status=200, reason=OK 
+ headers={'Connection': 'keep-alive', 'Content-Length': '114', 'Server': 'GitHub.com', 'Content-Type': 'application/json; charset=utf-8', 'permissions-policy': 'interest-cohort=()', 'Last-Modified': 'Sat, 18 Sep 2021 12:51:24 GMT', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31556952', 'ETag': '"6145e0cc-72"', 'expires': 'Tue, 16 Nov 2021 06:33:49 GMT', 'Cache-Control': 'max-age=600', 'x-proxy-cache': 'MISS', 'X-GitHub-Request-Id': 'C29A:149F:1E42D9D:1F3160F:61934E75', 'Accept-Ranges': 'bytes', 'Date': 'Tue, 16 Nov 2021 06:31:55 GMT', 'Via': '1.1 varnish', 'Age': '434', 'X-Served-By': 'cache-fra19137-FRA', 'X-Cache': 'HIT', 'X-Cache-Hits': '1', 'X-Timer': 'S1637044315.183840,VS0,VE1', 'Vary': 'Accept-Encoding', 'X-Fastly-Request-ID': 'd43ff171b2fb922642a6a8ede22058c237643474'} 
+ body={
+    "author": "Jan Egermaier",
+    "true":  "Star trek &gt; New Star wars",
+    "Best Super hero" : "Batman"
+  }
+   
+ </msg>
+<msg timestamp="20211116 07:31:55.917" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211116 07:31:55.801" endtime="20211116 07:31:55.917"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20211116 07:31:55.917" endtime="20211116 07:31:55.917"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20211116 07:31:55.917" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211116 07:31:55.917" endtime="20211116 07:31:55.917"/>
+</kw>
+<status status="PASS" starttime="20211116 07:31:55.801" endtime="20211116 07:31:55.917"/>
+</kw>
+<kw name="Get Best Heroes" library="keywords">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20211116 07:31:55.917" endtime="20211116 07:31:55.933"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${jsonResponse}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211116 07:31:55.933" level="INFO">${jsonResponse} = {'author': 'Jan Egermaier', 'true': 'Star trek &gt; New Star wars', 'Best Super hero': 'Batman'}</msg>
+<status status="PASS" starttime="20211116 07:31:55.933" endtime="20211116 07:31:55.933"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${heroes}</var>
+<arg>${jsonResponse['Best Super hero']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211116 07:31:55.933" level="INFO">${heroes} = Batman</msg>
+<status status="PASS" starttime="20211116 07:31:55.933" endtime="20211116 07:31:55.933"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${heroes}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20211116 07:31:55.933" level="INFO">${heroes} = Batman</msg>
+<status status="PASS" starttime="20211116 07:31:55.933" endtime="20211116 07:31:55.933"/>
+</kw>
+<status status="PASS" starttime="20211116 07:31:55.917" endtime="20211116 07:31:55.933"/>
+</kw>
+<kw name="Heroes exists" library="keywords">
+<arg>Batman</arg>
+<kw name="Should Be True" library="BuiltIn">
+<arg>"""${nameOfHeroes}""" == """${heroes}"""</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20211116 07:31:55.933" endtime="20211116 07:31:55.933"/>
+</kw>
+<status status="PASS" starttime="20211116 07:31:55.933" endtime="20211116 07:31:55.933"/>
+</kw>
+<tag>API</tag>
+<tag>TC01</tag>
+<status status="PASS" starttime="20211116 07:31:55.801" endtime="20211116 07:31:55.933"/>
+</test>
+<test id="s1-t2" name="LogIn to webPage">
+<kw name="Start browser" library="keywords">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL_WEB}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211116 07:31:55.933" level="FAIL">Variable '${BROWSER}' not found.</msg>
+<status status="FAIL" starttime="20211116 07:31:55.933" endtime="20211116 07:31:55.933"/>
+</kw>
+<status status="FAIL" starttime="20211116 07:31:55.933" endtime="20211116 07:31:55.948"/>
+</kw>
+<kw name="Input logIn and password" library="keywords">
+<status status="NOT RUN" starttime="20211116 07:31:55.948" endtime="20211116 07:31:55.948"/>
+</kw>
+<kw name="Click on logIn" library="keywords">
+<status status="NOT RUN" starttime="20211116 07:31:55.948" endtime="20211116 07:31:55.948"/>
+</kw>
+<kw name="Validate Klingon language" library="keywords">
+<status status="NOT RUN" starttime="20211116 07:31:55.948" endtime="20211116 07:31:55.948"/>
+</kw>
+<tag>TC02</tag>
+<tag>WEB</tag>
+<status status="FAIL" starttime="20211116 07:31:55.933" endtime="20211116 07:31:55.948">Variable '${BROWSER}' not found.</status>
+</test>
+<status status="FAIL" starttime="20211116 07:31:55.462" endtime="20211116 07:31:55.948"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">API</stat>
+<stat pass="1" fail="0" skip="0">TC01</stat>
+<stat pass="0" fail="1" skip="0">TC02</stat>
+<stat pass="0" fail="1" skip="0">WEB</stat>
+</tag>
+<suite>
+<stat pass="1" fail="1" skip="0" id="s1" name="Tc">Tc</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20211116 07:31:55.801" level="ERROR">Error in file 'C:\Users\JanEgermaierTesena\Downloads\gitHubWorkShop-master (2)\gitHubWorkShop-master\test\RobotFrameWork\RF_File\variables.robot' on line 4: Setting variable '${BROWSER}' failed: Environment variable '%{BROWSER}' not found.</msg>
+</errors>
+</robot>

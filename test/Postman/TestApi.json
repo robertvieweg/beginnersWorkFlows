@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "b2ad5f63-b6c6-458d-8005-b19a8c7a69b8",
+		"name": "TestApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Startrek > Starwars",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7f647d41-ad4a-42ae-913b-fc064d2e42dc",
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const body = pm.response.json();\r",
+							"pm.test(\"Expects Startrek > Star Wars\", function() {\r",
+							"    pm.expect(body).to.have.property(\"true\", 'Star trek > New Star wars');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://procesor2017.github.io/gitHubWorkShop/under/api.json",
+					"protocol": "https",
+					"host": [
+						"procesor2017",
+						"github",
+						"io"
+					],
+					"path": [
+						"gitHubWorkShop",
+						"under",
+						"api.json"
+					]
+				},
+				"description": "Verify that Startrek > Star Wars"
+			},
+			"response": []
+		},
+		{
+			"name": "SuperHeroes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "18108fce-6932-4bb3-a5c5-012cef566303",
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const body = pm.response.json();\r",
+							"pm.test(\"Expects Batman\", function() {\r",
+							"    pm.expect(body).to.have.property(\"Best Super hero\", 'Batman');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://procesor2017.github.io/gitHubWorkShop/under/api.json",
+					"protocol": "https",
+					"host": [
+						"procesor2017",
+						"github",
+						"io"
+					],
+					"path": [
+						"gitHubWorkShop",
+						"under",
+						"api.json"
+					]
+				},
+				"description": "The true hero is Batman"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
