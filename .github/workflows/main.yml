@@ -42,6 +42,20 @@ jobs:
             filename: ${{ github.workspace }}/test/k6/loadtest.js
           
           
+  robotGuiTest:
+    name: Robot GUI test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mám rád banány
+        uses: actions/checkout@v2
+      - name: Robot Gui test run
+        uses: |
+          docker run \
+            -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/reports:Z \
+            -v ${{ github.workspace }}/test/RobotFrameWork:/opt/robotframework/tests:Z \
+            -e BROWSER=chrome
+            ppodgorsek/robot-framework:latest
+          
 #name: DC
 
 # on:
