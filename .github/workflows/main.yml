@@ -6,7 +6,7 @@ on:
 
 jobs: 
   bestHero: 
-    runs on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
       - run: echo Batman Hello world
