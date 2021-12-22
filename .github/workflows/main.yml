@@ -1,5 +1,5 @@
 name: Github-CI/CD
-
+#koment přidaný v vs code
 on:
   push:
     branches:
